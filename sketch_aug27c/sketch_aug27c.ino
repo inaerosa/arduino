@@ -14,18 +14,21 @@ void setup() {
 
 void loop() {
   v = digitalRead(10);
-  if(v== HIGH || state=="RED") {
+  if(v== HIGH) {
+    digitalWrite(red, LOW);
     digitalWrite(green, HIGH);
     delay(3000);
     digitalWrite(green, LOW);
     state = "GREEN";
   } else if (v == LOW && state == "GREEN") {
     digitalWrite(yellow, HIGH);
-    delay(6000);
+    delay(2000);
     digitalWrite(yellow, LOW);
+    state = "yellow";
+  }else if (v == LOW || state=="yellow") { 
+    
     digitalWrite(red, HIGH);
-    delay(3000);
-    digitalWrite(red, LOW);
+   
     state = "RED";
     
     
